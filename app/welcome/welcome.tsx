@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { ProductCard } from "~/components/ProductCard"
 import type { Product } from "~/types/Product"
 
 export function Welcome() {
@@ -9,7 +10,7 @@ export function Welcome() {
       price: 0,
       description: "",
       category: "",
-      image: "",
+      image: "https://png.pngtree.com/png-vector/20210604/ourmid/pngtree-gray-network-placeholder-png-image_3416659.jpg",
       rating: {
         rate: 0,
         count: 0,
@@ -39,16 +40,16 @@ export function Welcome() {
       {/* Loop through products */}
       {productList.map(
         ({ id, title, price, description, category, image, rating }) => (
-          <div>
-            <p>id: {id}</p>
-            <p>title: {title}</p>
-            <p>price: {description}</p>
-            <p>description: {description}</p>
-            <p>category: {category}</p>
-            <p>image: {image}</p>
-            <p>rating count: {rating.count}</p>
-            <p>rating rate: {rating.rate}</p>
-          </div>
+          <ProductCard
+            key={id} // react needs key 
+            id={id}
+            title={title}
+            price={price}
+            description={description}
+            category={category}
+            image={image}
+            rating={rating}
+          />
         )
       )}
     </div>
